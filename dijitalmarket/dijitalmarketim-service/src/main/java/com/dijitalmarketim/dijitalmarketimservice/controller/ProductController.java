@@ -18,9 +18,11 @@ public class ProductController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Product> createProduct(@RequestBody ProductRequest request) {
+    public Product create(@RequestBody Product product) {
     
-        return ResponseEntity.ok().body(productService.createProduct(request));
+        return productService.save(product);
     }
+
+    
 
 }

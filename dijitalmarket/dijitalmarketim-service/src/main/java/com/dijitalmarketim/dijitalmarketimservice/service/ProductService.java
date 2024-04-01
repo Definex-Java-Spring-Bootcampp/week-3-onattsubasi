@@ -20,8 +20,20 @@ public class ProductService implements IProductService{
     @Override
     public Product save(Product product)
     {
-        productRepository.save(product);
-    
+        productRepository.getAll().stream().forEach(p -> {
+            
+            if(p.getProductId().equals(product.getProductId())){
+            
+                throw new IllegalArgumentException("Product already exists");
+                
+            }else{
+            
+                productRepository.save(product);
+            
+            }
+        
+        });
+
         return product;
     }
 

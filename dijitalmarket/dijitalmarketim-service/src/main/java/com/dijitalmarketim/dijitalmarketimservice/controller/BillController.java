@@ -18,9 +18,9 @@ public class BillController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Bill> createBill(@RequestBody BillRequest request) {
+    public Bill create(@RequestBody Bill bill) {
     
-        return ResponseEntity.ok().body(billService.createBill(request));
+        return billService.save(bill);
     }
 
 }

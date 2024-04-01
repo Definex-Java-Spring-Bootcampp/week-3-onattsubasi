@@ -1,0 +1,16 @@
+server:
+  port: 8084
+spring:
+  application:
+    name: dijitalmarketim-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: customer-service
+          uri: lb://DIGITALMARKETIM-SERVICE
+          predicates:
+             - Path=/api/customers/**
+        - id: order-service
+          uri: lb://DIGITALMARKETIM-SERVICE
+          predicates:
+             - Path=/api/orders/**
